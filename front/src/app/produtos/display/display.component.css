@@ -1,0 +1,20 @@
+.titulo{
+    display: inline-block;
+    font-size: 16px;
+    width: 80%;
+}
+.preco{
+    display: inline-block;
+    text-align: right;
+    font-size: 16px;
+    width: 19%;
+}
+.tamanho-imagem{
+  padding: 10px;
+  width: 125px;
+  height: 125px;
+}
+.tamanho-scroll{
+  max-height: 750px;
+  overflow: auto;
+}

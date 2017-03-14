@@ -1,0 +1,5 @@
+<div class="list-group">
+    <a class="list-group-item"
+       *ngFor="let cat of categorias"
+       (click)="onCategoriaSelected(cat)">{{cat.nome}}</a>
+</div>

@@ -1,0 +1,61 @@
+<div>
+  <div *ngIf="!categoria">
+    <h1>Selecione Uma Categoria</h1>
+  </div>
+  <div *ngIf="categoria">
+    <h1>{{categoria.nome}}</h1>
+
+    <button type="button" class="btn btn-default btn-lg" style="margin-bottom: 20px" (click)="adicionarItem(categoria,null)">
+      <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Adicionar
+    </button>
+
+    <article *ngFor="let produto of categoria.produtos; let indice = index" class="panel panel-default">
+      <div class="panel-heading">
+        <div class="titulo">
+          {{produto.nome}}
+        </div>
+        <div class="preco" *ngIf="produto.preco">
+          R${{produto.preco}} / unidade
+        </div>
+        <button type="button" class="btn btn-primary" (click)="adicionarItem(categoria,produto)">
+          <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Editar
+        </button>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-5">
+            <div class="input-group">
+              <span class="input-group-addon" id="sizing-addon2">Quantidade</span>
+              <input type="number" class="form-control" aria-describedby="sizing-addon2"
+                     [(ngModel)]="quantidadeCarrinho[indice]" maxlength="3" style="max-width: 100px" min="0" step="1">
+              <button type="button" class="btn btn-default" aria-label="Left Align" (click)="onItemAddCart(indice)">
+                <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+              </button>
+            </div>
+
+            <div *ngIf="produto.descricao">
+              <h3>Sobre o produto</h3>
+              <p>{{produto.descricao}}</p>
+            </div>
+          </div>
+          <div class="col-md-7">
+            <img *ngFor="let image of produto.imagens" [src]="image" class="tamanho-imagem">
+          </div>
+        </div>
+        <hr>
+        <div class="row" *ngIf="produto.dimensoes" style="text-align: center">
+          <h4>Dimensões</h4>
+          <ul class="nav nav-pills nav-justified">
+            <li class="nav-item"><a class="nav-link">Altura: {{produto.dimensoes.altura}}</a></li>
+            <li class="nav-item"><a class="nav-link">Largura: {{produto.dimensoes.largura}}</a></li>
+            <li class="nav-item"><a class="nav-link">Comprimento:{{produto.dimensoes.comprimento}}</a></li>
+            <li class="nav-item"><a class="nav-link">Peso:{{produto.dimensoes.peso}}</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="panel-footer">
+        <a target="_blank" [href]="produto.linkExterno">Ver No Mercado Livre</a>
+      </div>
+    </article>
+  </div>
+</div>

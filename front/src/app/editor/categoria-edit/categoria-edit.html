@@ -1,0 +1,25 @@
+<div class="backdrop" [ngStyle]="{'display': display}"></div>
+<div tabindex="-1" role="dialog" [ngStyle]="{'display': display}">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <label for="titulo">Titulo</label>
+        <input type="text"
+               id="titulo"
+               class="form-control"
+               [value]="titulo"
+               #form>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-success" (click)="onSave(form.value)">Salvar
+        </button>
+        <button
+          type="button"
+          class="btn btn-danger" (click)="onCancel()">Cancelar
+        </button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
